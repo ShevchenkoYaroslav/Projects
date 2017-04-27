@@ -1,6 +1,7 @@
 /**
  * Created by Valsorya94 on 25.04.2017.
  */
+
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -21,8 +22,7 @@ public class Parser {
         for (Element name : elements) {
             if (name.hasClass("wth")) {
                 printDate(name);
-            } else
-            if (!name.getElementsByAttributeValue("valign", "top").isEmpty()) {
+            } else if (!name.getElementsByAttributeValue("valign", "top").isEmpty()) {
                 printLineTD(name);
             }
         }
@@ -39,7 +39,7 @@ public class Parser {
         if (matcher.find()) {
             return matcher.group();
         } else
-            throw new Exception("Can't extract date from string!   ");
+            throw new Exception("Can't extract date from string!");
     }
 
     private static void printLineTD(Element name) {
@@ -49,6 +49,7 @@ public class Parser {
         System.out.println("");
 
     }
+
     private static void printDate(Element name) throws Exception {
         String dateString = name.select("th[id=dt]").text();
         String date = getDateFromString(dateString);
